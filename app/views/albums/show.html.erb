@@ -1,0 +1,31 @@
+<div>
+	<p id="notice"><%= notice %></p>
+
+	<p>
+	  <strong>Owner:</strong>
+	  <%= @album.user.email %>
+	</p>
+
+	<p>
+	  <strong>Album Name:</strong>
+	  <%= @album.name %>
+	</p>
+
+	<div class="row">
+		<% @images.each do |p| %>
+			<div class="col-lg-4">
+				<%if p.pic_url%>
+					<%= image_tag p.pic_url, :size => "300x300", class: "img-thumbnail" %>
+			  <%end%>
+			  <div class="image-owner">
+			  	<strong><%= p.user.email%></strong>
+			  </div>
+			</div>
+		<% end %>
+	</div>
+
+	<hr>
+	<%= link_to 'Edit', edit_album_path(@album), class: "btn btn-danger" %> |
+	<%= link_to 'Back', albums_path, class: "btn btn-info" %>
+	
+</div>

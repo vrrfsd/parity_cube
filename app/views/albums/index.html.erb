@@ -1,0 +1,33 @@
+<h1>Albums</h1>
+
+<%if @albums.empty?%>
+  <div class="alert alert-warning">
+    <strong> No images Found!</strong>
+  </div>
+<%else%>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Owner</th>
+        <th>Album Name</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @albums.each do |album| %>
+        <tr>
+          <td><%= album.user.email %></td>
+          <td><%= album.name %></td>
+          <td><%= link_to 'Show', album %></td>
+          <td><%= link_to 'Edit', edit_album_path(album) %></td>
+          <td><%= link_to 'Destroy', album, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<%end%>
+
+<br>
+
+<%= link_to 'New Album', new_album_path, class: "btn btn-info" %>

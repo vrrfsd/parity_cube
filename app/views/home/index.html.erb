@@ -1,0 +1,17 @@
+<div class="row">
+	<%@images.each do |image|%>
+		<div class="col-lg-4">
+				<%= image_tag image.pic_url, :size => "300x300", class: "img-thumbnail" %>
+			<div class="image-owner">
+		  	<div class="row">
+		  		<div class="col-lg-6"><strong>By: <%= image.user.email%></strong></div>
+		  	</div>
+		  </div>
+		</div>
+	<%end%>
+</div>
+<%if @images.empty?%>
+	<div class="alert alert-warning">
+	  <strong> No images Found!</strong>
+	</div>
+<%end%>
